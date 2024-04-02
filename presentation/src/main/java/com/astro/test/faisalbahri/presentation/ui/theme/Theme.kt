@@ -1,4 +1,4 @@
-package com.astro.test.faisalbahri.ui.theme
+package com.astro.test.faisalbahri.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -16,15 +16,15 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = PrimaryDark,
+    secondary = Primary,
+    tertiary = Accent
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = PrimaryDark,
+    secondary = Primary,
+    tertiary = Accent
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -47,7 +47,7 @@ fun AstroFreelanceAndroidAssignmentTheme(
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            if (darkTheme) DarkColorScheme else LightColorScheme
         }
 
         darkTheme -> DarkColorScheme
