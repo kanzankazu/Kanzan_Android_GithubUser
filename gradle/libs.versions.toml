@@ -74,7 +74,7 @@ com-google-dagger-hilt-android = { module = "com.google.dagger:hilt-android", ve
 com-google-dagger-hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltTesting" }
 io-mockk-mockk = { module = "io.mockk:mockk", version.ref = "mockkCore" }
 io-mockk-mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkAndroid" }
-io-reactivex-rxjava-2-rxandroid = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rxJava" }
+io-reactivex-rxjava2-rxandroid = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rxJava" }
 junit = { module = "junit:junit", version.ref = "junit" }
 org-jetbrains-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutinesCore" }
 

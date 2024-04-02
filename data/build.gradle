@@ -32,14 +32,27 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':common')
+    implementation project(path: ':domain')
 
     implementation libs.com.google.dagger.hilt.android
     kapt libs.com.google.dagger.hilt.android.compiler
 
-    androidTestImplementation libs.androidx.test.espresso.core
-    androidTestImplementation libs.androidx.test.ext.junit
     implementation libs.androidx.appcompat
     implementation libs.androidx.core.ktx
     implementation libs.com.google.android.material
+    implementation libs.com.squareup.okhttp3.logging.interceptor
+    implementation libs.com.squareup.retrofit2.retrofit
+    implementation libs.com.squareup.retrofit2.converter.gson
+    implementation libs.io.reactivex.rxjava2.rxandroid
+    implementation libs.com.squareup.retrofit2.adapter.rxjava2
+    //implementation libs.com.github.chuckerteam.chucker.library
+    //implementation libs.com.github.chuckerteam.chucker.library.no.op
+
+    androidTestImplementation libs.androidx.test.espresso.core
+    androidTestImplementation libs.androidx.test.ext.junit
     testImplementation libs.junit
+    testImplementation(libs.io.mockk.mockk.android)
+    testImplementation(libs.io.mockk.mockk)
+    testImplementation(libs.org.jetbrains.kotlinx.coroutines.test)
 }

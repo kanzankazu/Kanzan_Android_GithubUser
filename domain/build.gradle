@@ -32,14 +32,19 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':common')
 
     implementation libs.com.google.dagger.hilt.android
     kapt libs.com.google.dagger.hilt.android.compiler
 
-    androidTestImplementation libs.androidx.test.espresso.core
-    androidTestImplementation libs.androidx.test.ext.junit
     implementation libs.androidx.appcompat
     implementation libs.androidx.core.ktx
     implementation libs.com.google.android.material
+
+    androidTestImplementation libs.androidx.test.espresso.core
+    androidTestImplementation libs.androidx.test.ext.junit
     testImplementation libs.junit
+    testImplementation(libs.io.mockk.mockk.android)
+    testImplementation(libs.io.mockk.mockk)
+    testImplementation(libs.org.jetbrains.kotlinx.coroutines.test)
 }
