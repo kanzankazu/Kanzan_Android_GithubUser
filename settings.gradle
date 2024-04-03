@@ -1,23 +1,27 @@
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
+        //noinspection JcenterRepositoryObsolete
+        jcenter()
         mavenCentral()
-        gradlePluginPortal()
+        maven { url "https://jitpack.io" }
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        //noinspection JcenterRepositoryObsolete
+        jcenter()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.google.com/' }
     }
 }
 
 rootProject.name = "Astro Freelance Android Assignment"
 include ':app'
+include ':common'
+include ':data'
+include ':domain'
+include ':presentation'
