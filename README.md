@@ -6,6 +6,7 @@
 To run this project, you will need to add the following environment variables to your .env file. Env file in /app/assets
 
 `BASE_URL=`
+
 `TOKEN=`
 
 **DO NOT PUSH ENV FILE TO VERSION CONTROL**
