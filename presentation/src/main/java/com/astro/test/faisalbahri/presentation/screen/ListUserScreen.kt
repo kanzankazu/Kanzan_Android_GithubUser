@@ -35,12 +35,13 @@ fun ListUserScreen(viewModel: ListUserViewModel = hiltViewModel()) {
 
     LaunchedEffect(key1 = searchText) {
         //if (searchText.isBlank()) return@LaunchedEffect
-        delay(2000)
+        viewModel.fetchUsersLoading()
+        delay(1000)
         viewModel.fetchUsers(searchText)
     }
 
     Scaffold(
-        topBar = { TitleTopBar(title = "Github Useres") }
+        topBar = { TitleTopBar(title = "Github Users") }
     ) {
         Column(
             modifier = initMod()
@@ -60,9 +61,7 @@ fun ListUserScreen(viewModel: ListUserViewModel = hiltViewModel()) {
                     value = searchText,
                     label = { Text(text = stringResource(id = R.string.label_search)) },
                     keyboardActions = KeyboardActions(),
-                    onValueChange = {
-                        searchText = it
-                    }
+                    onValueChange = { searchText = it }
                 )
 
                 ListUserContainer(searchUserResultState)

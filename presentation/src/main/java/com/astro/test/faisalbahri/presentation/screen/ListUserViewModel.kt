@@ -37,8 +37,12 @@ class ListUserViewModel @Inject constructor(
                         _usersList.value = it.toUiStateError()
                     }
             }
-        }else{
+        } else {
             _usersList.value = initUiStateDefault()
         }
+    }
+
+    fun fetchUsersLoading() {
+        _usersList.value = initUiStateLoading()
     }
 }

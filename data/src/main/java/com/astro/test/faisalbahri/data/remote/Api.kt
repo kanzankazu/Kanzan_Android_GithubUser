@@ -9,5 +9,6 @@ interface Api {
     @GET("search/users")
     suspend fun getSearchUser(
         @Query("q") q: String,
+        @Query("per_page") perPage: Int = 5,
     ): Response<GithubUsersSearchResponse>
 }

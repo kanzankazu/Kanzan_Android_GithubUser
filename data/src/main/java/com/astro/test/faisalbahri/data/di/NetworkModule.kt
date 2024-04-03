@@ -5,7 +5,8 @@ import com.astro.test.faisalbahri.common.utils.Constants.Companion.BASE_URL
 import com.astro.test.faisalbahri.common.utils.Constants.Companion.TOKEN
 import com.astro.test.faisalbahri.common.utils.ContextProvider
 import com.astro.test.faisalbahri.data.remote.Api
-//import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,7 +46,14 @@ internal object NetworkModule {
                     val request = it.request().newBuilder().addHeader("Authorization", "Bearer $TOKEN").build()
                     it.proceed(request)
                 }
-//                .addInterceptor (ChuckerInterceptor(contextProvider.getContext()))
+                .addInterceptor (
+                    ChuckerInterceptor.Builder(contextProvider.getContext())
+                        .collector(ChuckerCollector(contextProvider.getContext(), true))
+                        .maxContentLength(250000L)
+                        .redactHeaders(emptySet())
+                        .alwaysReadResponseBody(false)
+                        .build()
+                )
                 .addNetworkInterceptor(loggingInterceptor)
                 .connectTimeout(Duration.ofSeconds(10))
                 .readTimeout(Duration.ofSeconds(30))
