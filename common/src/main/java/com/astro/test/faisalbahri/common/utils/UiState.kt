@@ -1,4 +1,4 @@
-package com.astro.test.faisalbahri.domain.base
+package com.astro.test.faisalbahri.common.utils
 
 sealed class UiState<out T> {
     object Default : UiState<Nothing>()

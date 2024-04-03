@@ -1,3 +1,8 @@
 package com.astro.test.faisalbahri.data.remote.datasource
 
-interface DataSource
+import com.astro.test.faisalbahri.data.model.GithubUsersSearchResponse
+import retrofit2.Response
+
+interface DataSource {
+    suspend fun getSearchUser(q: String): Response<GithubUsersSearchResponse>
+}

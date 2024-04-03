@@ -2,7 +2,10 @@ package com.astro.test.faisalbahri.data.di
 
 import android.os.Build
 import com.astro.test.faisalbahri.common.utils.Constants.Companion.BASE_URL
+import com.astro.test.faisalbahri.common.utils.Constants.Companion.TOKEN
+import com.astro.test.faisalbahri.common.utils.ContextProvider
 import com.astro.test.faisalbahri.data.remote.Api
+//import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,9 +37,15 @@ internal object NetworkModule {
     @Singleton
     fun provideHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
+        contextProvider: ContextProvider
     ): OkHttpClient {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             OkHttpClient.Builder()
+                .addInterceptor {
+                    val request = it.request().newBuilder().addHeader("Authorization", "Bearer $TOKEN").build()
+                    it.proceed(request)
+                }
+//                .addInterceptor (ChuckerInterceptor(contextProvider.getContext()))
                 .addNetworkInterceptor(loggingInterceptor)
                 .connectTimeout(Duration.ofSeconds(10))
                 .readTimeout(Duration.ofSeconds(30))

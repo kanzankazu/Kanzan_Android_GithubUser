@@ -14,8 +14,8 @@ suspend fun <T : ResponseModel> handleAPICall(
     } catch (e: Exception) {
         e.printStackTrace()
         return when (e) {
-            is UnknownHostException -> Resource.Failure(IOException())
-            else -> Resource.Failure(IOException())
+            is UnknownHostException -> Resource.Failure(IOException().toString())
+            else -> Resource.Failure(IOException().toString())
         }
     }
 }
@@ -26,7 +26,7 @@ private fun <T : ResponseModel> Response<T>.handleAPIResponse(): Resource<T> {
         return Resource.Success(responseBody)
     }
     return Resource.Failure(
-        IOException()
+        IOException().toString()
     )
 }
 

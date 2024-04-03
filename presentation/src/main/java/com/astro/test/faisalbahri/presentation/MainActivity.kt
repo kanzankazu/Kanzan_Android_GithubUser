@@ -1,5 +1,6 @@
 package com.astro.test.faisalbahri.presentation
 
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -9,12 +10,15 @@ import androidx.navigation.compose.rememberNavController
 import com.astro.test.faisalbahri.presentation.base.BaseActivityBindingCompose
 import com.astro.test.faisalbahri.presentation.navigation.ScreenNavigation
 import com.astro.test.faisalbahri.presentation.screen.ListUserScreen
+import com.astro.test.faisalbahri.presentation.screen.ListUserViewModel
 import com.astro.test.faisalbahri.presentation.screen.SplashScreen
 import com.astro.test.faisalbahri.presentation.ui.theme.AstroFreelanceAndroidAssignmentTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivityBindingCompose() {
+
     @Composable
     override fun SetContentCompose() {
         AstroFreelanceAndroidAssignmentTheme {

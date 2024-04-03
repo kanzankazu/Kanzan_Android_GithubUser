@@ -4,11 +4,11 @@ agp = "8.3.1"
 appcompat = "1.6.1"
 compose = "2.7.0"
 composeActivity = "1.8.2"
-composeBom = "2023.08.00"
-composeGlide = "1.0.0-alpha.1"
+composeBom = "2024.03.00"
+composeGlide = "1.0.0-beta01"
 composeHiltNav = "1.2.0"
 coreKtx = "1.12.0"
-coroutinesCore = "1.7.2"
+coroutinesCore = "1.7.3"
 espresso = "3.5.1"
 flexBox = "3.0.0"
 fragmenKtx = "1.6.2"
@@ -31,6 +31,7 @@ rxJava = "2.1.1"
 shimmer = "0.5.0"
 swipeToRefresh = "1.1.0"
 viewPager = "1.0.0"
+chucker = "3.5.2"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -77,6 +78,8 @@ io-mockk-mockk-android = { module = "io.mockk:mockk-android", version.ref = "moc
 io-reactivex-rxjava2-rxandroid = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rxJava" }
 junit = { module = "junit:junit", version.ref = "junit" }
 org-jetbrains-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutinesCore" }
+com-github-chuckerteam-chucker-library = { module = "com.github.chuckerteam.chucker:library", version.ref = "chucker" }
+com-github-chuckerteam-chucker-library-no-op = { module = "com.github.chuckerteam.chucker:library-no-op", version.ref = "chucker" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

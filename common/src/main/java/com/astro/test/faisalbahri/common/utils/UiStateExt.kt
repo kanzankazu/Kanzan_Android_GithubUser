@@ -1,6 +1,4 @@
-package com.astro.test.faisalbahri.domain.base
-
-import com.astro.test.faisalbahri.domain.base.baseresponse.BaseResponse
+package com.astro.test.faisalbahri.common.utils
 
 fun initUiStateDefault() = UiState.Default
 fun initUiStateLoading() = UiState.Loading
