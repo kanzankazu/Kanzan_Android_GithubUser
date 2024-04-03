@@ -1,8 +1,7 @@
 package com.astro.test.faisalbahri.data.di
 
 import android.os.Build
-import com.astro.test.faisalbahri.common.utils.Constants.Companion.BASE_URL
-import com.astro.test.faisalbahri.common.utils.Constants.Companion.TOKEN
+import com.astro.test.faisalbahri.common.extensions.getEnv
 import com.astro.test.faisalbahri.common.utils.ContextProvider
 import com.astro.test.faisalbahri.data.remote.Api
 import com.chuckerteam.chucker.api.ChuckerCollector
@@ -26,11 +25,14 @@ internal object NetworkModule {
     @Provides
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
-    ): Retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(okHttpClient)
-        .build()
+    ): Retrofit {
+        val baseUrl = getEnv(null, "BASE_URL")
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
+    }
 
     @Singleton
     @Provides
@@ -43,28 +45,31 @@ internal object NetworkModule {
     fun provideHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
         contextProvider: ContextProvider,
-    ): OkHttpClient = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        OkHttpClient.Builder()
-            .addInterceptor {
-                val request = it.request().newBuilder().addHeader("Authorization", "Bearer $TOKEN").build()
-                it.proceed(request)
-            }
-            .addInterceptor(
-                ChuckerInterceptor.Builder(contextProvider.getContext())
-                    .collector(ChuckerCollector(contextProvider.getContext(), true))
-                    .maxContentLength(250000L)
-                    .redactHeaders(emptySet())
-                    .alwaysReadResponseBody(false)
-                    .build()
-            )
-            .addNetworkInterceptor(loggingInterceptor)
-            .connectTimeout(Duration.ofSeconds(10))
-            .readTimeout(Duration.ofSeconds(30))
-            .build()
-    } else {
-        OkHttpClient.Builder()
-            .addNetworkInterceptor(loggingInterceptor)
-            .build()
+    ): OkHttpClient {
+        val token = getEnv(null, "TOKEN")
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            OkHttpClient.Builder()
+                .addInterceptor {
+                    val request = it.request().newBuilder().addHeader("Authorization", "Bearer $token").build()
+                    it.proceed(request)
+                }
+                .addInterceptor(
+                    ChuckerInterceptor.Builder(contextProvider.getContext())
+                        .collector(ChuckerCollector(contextProvider.getContext(), true))
+                        .maxContentLength(250000L)
+                        .redactHeaders(emptySet())
+                        .alwaysReadResponseBody(false)
+                        .build()
+                )
+                .addNetworkInterceptor(loggingInterceptor)
+                .connectTimeout(Duration.ofSeconds(10))
+                .readTimeout(Duration.ofSeconds(30))
+                .build()
+        } else {
+            OkHttpClient.Builder()
+                .addNetworkInterceptor(loggingInterceptor)
+                .build()
+        }
     }
 
     @Provides

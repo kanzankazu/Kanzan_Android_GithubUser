@@ -48,6 +48,7 @@ dependencies {
     implementation libs.com.squareup.retrofit2.adapter.rxjava2
     implementation libs.com.github.chuckerteam.chucker.library
 //    implementation libs.com.github.chuckerteam.chucker.library.no.op
+    implementation libs.io.github.cdimascio.dotenv.kotlin
 
     androidTestImplementation libs.androidx.test.espresso.core
     androidTestImplementation libs.androidx.test.ext.junit
