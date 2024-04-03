@@ -1,0 +1,80 @@
+commit 560a7390f9bda0d4bb272fda08e985369cb4da12
+Author: kanzankazu <kanzankazu46@gmail.com>
+Date:   Thu Apr 4 02:00:38 2024 +0700
+
+    Update main.yml
+
+commit dc786b4c689f88332a3c9ea532b0a88dac65b7dc
+Author: kanzankazu <kanzankazu46@gmail.com>
+Date:   Thu Apr 4 02:00:05 2024 +0700
+
+    Update README.md
+
+commit c49fc1d72b5a7cc9e899b027f5b378282772fd67
+Author: kanzankazu <kanzankazu46@gmail.com>
+Date:   Thu Apr 4 01:56:25 2024 +0700
+
+    Create main.yml
+
+commit bc1787f047c7049d78975b4b63e86950451c9971
+Merge: ab83618 2901b7e
+Author: kanzankazu <kanzankazu46@gmail.com>
+Date:   Thu Apr 4 01:55:48 2024 +0700
+
+    Merge pull request #1
+    
+    merge to main
+
+commit 2901b7ec1c92e38aabd747124a085b6e80b462de
+Author: Faisal Bahri <kanzankazu46@gmail.com>
+Date:   Thu Apr 4 01:48:15 2024 +0700
+
+    add env
+
+commit db47bfc000c288e0cb7ca6195b19971f77e7caaa
+Author: Faisal Bahri <kanzankazu46@gmail.com>
+Date:   Wed Apr 3 23:02:40 2024 +0700
+
+    add unit test
+
+commit 87fbc1a79810019508f80bd1508aa661eea9bf06
+Author: Faisal Bahri <kanzankazu46@gmail.com>
+Date:   Wed Apr 3 16:51:31 2024 +0700
+
+    add Chucker For Logging
+
+commit 7a566ae9e7345c6e1c7cf3d18b43fbec81931fa7
+Author: Faisal Bahri <kanzankazu46@gmail.com>
+Date:   Wed Apr 3 12:30:07 2024 +0700
+
+    finish binding API
+
+commit af422d2da68426216cce8d092b4368b46b02548c
+Author: Faisal Bahri <kanzankazu46@gmail.com>
+Date:   Wed Apr 3 01:29:14 2024 +0700
+
+    create ui, navigation dan handle data
+
+commit a2f030e0cb8c81f372c721bf1b4e33e163437768
+Author: Faisal Bahri <kanzankazu46@gmail.com>
+Date:   Tue Apr 2 14:42:56 2024 +0700
+
+    initial data & domain module
+
+commit a4eaf948da2767caee4c61a6c930f5ce5fd459c4
+Author: Faisal Bahri <kanzankazu46@gmail.com>
+Date:   Tue Apr 2 14:06:03 2024 +0700
+
+    create multiple module + initial common module & add hilt
+
+commit ab8361888c9215fc41f34eaaf6add8f8e793ad50
+Author: Faisal Bahri <kanzankazu46@gmail.com>
+Date:   Tue Apr 2 14:16:31 2024 +0700
+
+    initial commit v2
+
+commit 9e8848252a6aac39171225677fa298ec6d08e61b
+Author: Faisal Bahri <kanzankazu46@gmail.com>
+Date:   Mon Apr 1 17:15:20 2024 +0700
+
+    Initial commit
