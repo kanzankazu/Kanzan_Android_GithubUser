@@ -24,7 +24,9 @@ internal object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    fun provideRetrofit(
+        okHttpClient: OkHttpClient,
+    ): Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
@@ -32,45 +34,42 @@ internal object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApi(retrofit: Retrofit): Api = retrofit.create(Api::class.java)
+    fun provideApi(
+        retrofit: Retrofit,
+    ): Api = retrofit.create(Api::class.java)
 
     @Provides
     @Singleton
     fun provideHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
-        contextProvider: ContextProvider
-    ): OkHttpClient {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            OkHttpClient.Builder()
-                .addInterceptor {
-                    val request = it.request().newBuilder().addHeader("Authorization", "Bearer $TOKEN").build()
-                    it.proceed(request)
-                }
-                .addInterceptor (
-                    ChuckerInterceptor.Builder(contextProvider.getContext())
-                        .collector(ChuckerCollector(contextProvider.getContext(), true))
-                        .maxContentLength(250000L)
-                        .redactHeaders(emptySet())
-                        .alwaysReadResponseBody(false)
-                        .build()
-                )
-                .addNetworkInterceptor(loggingInterceptor)
-                .connectTimeout(Duration.ofSeconds(10))
-                .readTimeout(Duration.ofSeconds(30))
-                .build()
-        } else {
-            OkHttpClient.Builder()
-                .addNetworkInterceptor(loggingInterceptor)
-                .build()
-        }
+        contextProvider: ContextProvider,
+    ): OkHttpClient = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        OkHttpClient.Builder()
+            .addInterceptor {
+                val request = it.request().newBuilder().addHeader("Authorization", "Bearer $TOKEN").build()
+                it.proceed(request)
+            }
+            .addInterceptor(
+                ChuckerInterceptor.Builder(contextProvider.getContext())
+                    .collector(ChuckerCollector(contextProvider.getContext(), true))
+                    .maxContentLength(250000L)
+                    .redactHeaders(emptySet())
+                    .alwaysReadResponseBody(false)
+                    .build()
+            )
+            .addNetworkInterceptor(loggingInterceptor)
+            .connectTimeout(Duration.ofSeconds(10))
+            .readTimeout(Duration.ofSeconds(30))
+            .build()
+    } else {
+        OkHttpClient.Builder()
+            .addNetworkInterceptor(loggingInterceptor)
+            .build()
     }
 
     @Provides
     @Singleton
-    fun provideHttpLogger(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
+    fun provideHttpLogger(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
     }
-
 }

@@ -5,9 +5,9 @@ import com.astro.test.faisalbahri.data.remote.Api
 import retrofit2.Response
 import javax.inject.Inject
 
-internal class DataSourceImpl @Inject constructor(
+internal class UserDataSourceImpl @Inject constructor(
     private val api: Api,
-) : DataSource{
+) : UserDataSource {
     override suspend fun getSearchUser(q: String): Response<GithubUsersSearchResponse> {
         return api.getSearchUser(q)
     }

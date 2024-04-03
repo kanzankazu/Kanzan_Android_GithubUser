@@ -1,6 +1,6 @@
 package com.astro.test.faisalbahri.data.di
 
-import com.astro.test.faisalbahri.data.remote.datasource.DataSource
+import com.astro.test.faisalbahri.data.remote.datasource.UserDataSource
 import com.astro.test.faisalbahri.data.repository.UserRepository
 import com.astro.test.faisalbahri.data.repository.UserRepositoryImpl
 import dagger.Module
@@ -15,6 +15,7 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideHomeRepository(dataSource: DataSource): UserRepository =
-        UserRepositoryImpl(dataSource)
+    fun provideHomeRepository(
+        userDataSource: UserDataSource,
+    ): UserRepository = UserRepositoryImpl(userDataSource)
 }
