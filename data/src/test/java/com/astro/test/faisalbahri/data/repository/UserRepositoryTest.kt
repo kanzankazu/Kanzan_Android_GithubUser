@@ -31,7 +31,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    fun `getListFirst returns success`() = runBlocking {
+    fun `getSearchUser returns success`() = runBlocking {
         val mockResponse = mockk<Response<GithubUsersSearchResponse>>()
         val searchUserParam = "Kanzan"
         val searchUserParamSlot = slot<String>()
