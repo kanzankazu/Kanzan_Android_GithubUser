@@ -47,6 +47,7 @@ fun Exception.toBaseResponseError(): BaseResponse.Error {
                     data = error.data,
                 )
             }
+
             else -> BaseResponse.Error(message = message.orEmpty())
         }
     } catch (e: Exception) {

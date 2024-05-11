@@ -49,10 +49,10 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':common')
     implementation project(path: ':presentation')
     implementation project(path: ':data')
     implementation project(path: ':domain')
-    implementation project(path: ':common')
 
     implementation libs.com.google.dagger.hilt.android
     kapt libs.com.google.dagger.hilt.android.compiler

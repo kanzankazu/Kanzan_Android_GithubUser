@@ -14,14 +14,14 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object UseCaseModule{
+object UseCaseModule {
 
     @Singleton
     @Provides
     fun provideHomeUseCase(
         getUserRepository: UserRepository,
         githubUsersSearchDomainModelMapper: GithubUsersSearchDomainModelMapper,
-        @IoDispatcher dispatcher: CoroutineDispatcher
+        @IoDispatcher dispatcher: CoroutineDispatcher,
     ): UserUseCase = UserUseCaseImpl(
         dispatcher,
         getUserRepository,

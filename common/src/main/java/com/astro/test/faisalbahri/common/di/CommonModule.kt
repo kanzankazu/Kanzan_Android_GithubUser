@@ -16,7 +16,7 @@ object CommonModule {
     @Singleton
     @Provides
     fun provideContextProvider(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): ContextProvider {
         return ContextProvider(context)
     }

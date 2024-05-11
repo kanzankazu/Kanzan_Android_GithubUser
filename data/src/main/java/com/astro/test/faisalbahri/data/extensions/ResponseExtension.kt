@@ -7,7 +7,7 @@ import java.io.IOException
 import java.net.UnknownHostException
 
 suspend fun <T : ResponseModel> handleAPICall(
-    apiCall: suspend () -> Response<T>
+    apiCall: suspend () -> Response<T>,
 ): Resource<T> {
     return try {
         apiCall.invoke().handleAPIResponse()
