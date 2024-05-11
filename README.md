@@ -1,4 +1,3 @@
-
 # Astro Freelance Android Assignment
 
 ## Environment Variables
@@ -14,7 +13,7 @@ To run this project, you will need to add the following environment variables to
 ## Libraries
 
 - Kotlin for Android App Development
-- MVVM 
+- MVVM
 - Modularization & Multi Module
 - Material UI
 - Jetpack Compose

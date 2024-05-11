@@ -39,8 +39,8 @@ android {
 
 dependencies {
 
-    implementation project(path: ':domain')
     implementation project(path: ':common')
+    implementation project(path: ':domain')
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.lifecycle.runtime.ktx

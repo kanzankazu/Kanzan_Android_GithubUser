@@ -37,11 +37,12 @@ fun TitleTopBar(title: String, modifier: Modifier = Modifier) {
                 fontWeight = FontWeight.Bold
             )
         },
-        colors = TopAppBarDefaults.largeTopAppBarColors(containerColor = PrimaryDark))
+        colors = TopAppBarDefaults.largeTopAppBarColors(containerColor = PrimaryDark)
+    )
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun TitleTopBarPreview() {
-    TitleTopBar("Kanzan",)
+    TitleTopBar("Kanzan")
 }
